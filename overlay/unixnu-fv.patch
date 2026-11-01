@@ -1,3 +1,4 @@
+# Rebuild trigger: pick up the current DarwinBoot (in-window device tree).
 diff --git a/Platforms/Xiaomi/cepheusPkg/DeviceBuild.py b/Platforms/Xiaomi/cepheusPkg/DeviceBuild.py
 index 2178d35..2c6748a 100644
 --- a/Platforms/Xiaomi/cepheusPkg/DeviceBuild.py
