@@ -71,6 +71,11 @@ jobs:
             "$GITHUB_WORKSPACE/overlay/darwinboot-diag.patch"
           git -C unixnu-umbrella/drivers/DarwinBoot apply \
             "$GITHUB_WORKSPACE/overlay/darwinboot-diag.patch"
+          # Keep the kernel window at or below the GOP framebuffer: the kernel's
+          # physmap only grows upwards, so a framebuffer below the load address
+          # is unmapped at the first TTBR0 switch and the early console dies.
+          python3 "$GITHUB_WORKSPACE/overlay/patch_darwinboot.py" \
+            unixnu-umbrella/drivers/DarwinBoot/DarwinBootPkg/Driver/DarwinBoot.c
           echo "--- darwinboot diagnostics patch ---"
           git -C unixnu-umbrella/drivers/DarwinBoot diff --stat
           echo "--- patched PackagesPath ---"
